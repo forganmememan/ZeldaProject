@@ -1,11 +1,9 @@
 PImage bg;
 String[][] map = new String[16][8];
-String[] unicode = new String[16];
-unicode[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"}; 
+String[] unicode = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"};
 Player player;
 Rock rock;
 
-boolean isTouchingObj;
 int j;
 
 
@@ -15,15 +13,15 @@ void setup(){
   bg = loadImage("/images/testbg.png");
   player = new Player();
   rock = new Rock();
-  isTouchingObj = false;
+  
+   // Create and fill map array
   for (int i = 0; i < 16; i++){
     for (j = 0; j < 8; j++){
-      map[i][j] = "\u0041" + "48";
-    
+      map[i][j] = unicode[i] + ((int)j + 1);
     }
-    map[i][0] = "\u0041";
-    println(map[i][0]);
+    j = 0;
   }
+  
 }
 
 
@@ -40,9 +38,9 @@ void bg(){
 }
 
 
-void checkTransition(){
+boolean checkTransition(){
   if (player.x < 10){
-    
+    return true;
   }
-
+  return false;
 }
