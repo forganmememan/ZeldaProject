@@ -5,15 +5,14 @@ public class Rock {
   
   public Rock(){
     rock = loadImage("/images/rock.png");
-    x = 0;
-    y = 0;
+    x = width/2 + 100;
+    y = height/2 + 100;
   }
   
   
-  void placeRock(){
+  void updateRock(){
     image(rock, x, y, 16*4, 16*4);
-  
-  
+    
   }
 
 }

@@ -12,11 +12,15 @@ public class Player {
   }
   
   
-  void movePlayer(){
+  void updatePlayer(){
     image(player, x, y, 15*4, 16*4);
-    if (keyPressed) {
+    movePlayer();
+  }
+  
+  void movePlayer(){
+    if (keyPressed && !isTouchingObj) {
       if (keyCode == LEFT) {
-        x  -= playerSpeed;
+        x -= playerSpeed;
       }
       if (keyCode == RIGHT) {
         x += playerSpeed;
@@ -30,6 +34,8 @@ public class Player {
       }
         
     }
+  
+  
   }
 
 
