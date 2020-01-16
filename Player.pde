@@ -1,7 +1,7 @@
 public class Player {
   
   float x, y;
-  float playerSpeed = 6;
+  float playerSpeed = 20;
   String playerDirection;
   boolean isSwinging;
   
@@ -64,12 +64,9 @@ public class Player {
         playerDirection = "up";
       }
       if (key == 'x') {
-        isSwinging = true;
-        println(isSwinging);
-        if (isSwinging){
-          swing();
-          //isSwinging = false;
-        }
+        swing();
+        //println(isSwinging);
+        
       }
         
     }
@@ -87,6 +84,8 @@ public class Player {
         image(playerUp[0], x, y, 15*4, 16*4);
       }
     }
+    
+
   
   
   }
@@ -97,17 +96,21 @@ public class Player {
   }
   
   void swing(){
+    
+    println("swing");
     if (playerDirection == "down"){
-      if (frameCount%3 == 0 || frameCount%3 == 2){
-        image(playerSwingDown[frameCount%3], x, y, 15*4, 16*4);
+      if (isSwinging == false){
+       image(playerSwingDown[1], x, y, 15*4, 27*4);
       }
-      if (frameCount%3 == 1){
-        image(playerSwingDown[frameCount%3], x, y, 15*4, 29*4);
+      else {
+        image(playerSwingDown[1], x, y, 15*4, 27*4);
       }
       
     }
   
   }
+  
+  
 
 
 }

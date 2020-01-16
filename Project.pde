@@ -9,8 +9,8 @@ int j;
 
 void setup(){
   size(1024, 704); // 16 x 11 grid of 16x16 sprites
-  frameRate(60);
-  bg = loadImage("/images/testbg.png");
+  frameRate(10);
+  bg = loadImage("/images/overworld/L2.png");
   player = new Player();
   rock = new Rock();
   
@@ -31,6 +31,14 @@ void draw(){
   rock.updateRock();
 }
 
+
+  //void keyReleased() {
+    
+    //if (key == 'x') {
+      //println("key released");
+        //player.isSwinging = false;
+    //}
+  //}
 
 void bg(){
   image(bg, 0, 0, width, height);
