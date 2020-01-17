@@ -12,9 +12,9 @@ public class Rock {
     y = height/2 + 100;
     rockHitbox.topLeft.x = (int)x;
     rockHitbox.topLeft.y = (int)y;
-    rockHitbox.bottomRight.x = (int)x + 16;
-    rockHitbox.bottomRight.y = (int)y + 16;
-    rockHitbox.hitboxType = "entrance";
+    rockHitbox.bottomRight.x = (int)x + 16*4;
+    rockHitbox.bottomRight.y = (int)y + 16*4;
+    rockHitbox.hitboxType = "solidObject";
   }
   
   

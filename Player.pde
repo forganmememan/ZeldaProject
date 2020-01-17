@@ -36,8 +36,8 @@ public class Player {
     isSwinging = false;
     playerHitbox.topLeft.x = (int)x;
     playerHitbox.topLeft.y = (int)y;
-    playerHitbox.bottomRight.x = (int)x + 15;
-    playerHitbox.bottomRight.y = (int)y + 16;
+    playerHitbox.bottomRight.x = (int)x + 15*4;
+    playerHitbox.bottomRight.y = (int)y + 16*4;
   }
   
   
@@ -77,6 +77,34 @@ public class Player {
         playerHitbox.bottomRight.y -= playerSpeed;
         playerDirection = "up";
       }
+      if (key == 'a') {
+        image(playerLeft[frameCount%2], x, y, 15*4, 16*4);
+        x -= playerSpeed;
+        playerHitbox.topLeft.x -= playerSpeed;
+        playerHitbox.bottomRight.x -= playerSpeed;
+        playerDirection = "left";
+      }
+      if (key == 'd') {
+        image(playerRight[frameCount%2], x, y, 15*4, 16*4);
+        x += playerSpeed;
+        playerHitbox.topLeft.x += playerSpeed;
+        playerHitbox.bottomRight.x += playerSpeed;
+        playerDirection = "right";
+      }
+      if (key == 's') {
+        image(playerDown[frameCount%2], x, y, 15*4, 16*4);
+        y += playerSpeed;
+        playerHitbox.topLeft.y += playerSpeed;
+        playerHitbox.bottomRight.y += playerSpeed;
+        playerDirection = "down";
+      }
+      if (key == 'w') {
+        image(playerUp[frameCount%2], x, y, 15*4, 16*4);
+        y -= playerSpeed;
+        playerHitbox.topLeft.y -= playerSpeed;
+        playerHitbox.bottomRight.y -= playerSpeed;
+        playerDirection = "up";
+      }
       if (key == 'x') {
         swing();
         //println(isSwinging);
@@ -106,8 +134,14 @@ public class Player {
   
   void checkHitbox(){
     rect(x, y, 15*4, 16*4);
+    //println(x);
+    //println(rock.x);
+    //println(rock.rockHitbox.bottomRight.x);
     if(playerHitbox.isCollision(rock.rockHitbox)){
       println("collision");
+    }
+    else {
+      println("no collision");
     }
   }
   

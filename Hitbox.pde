@@ -6,24 +6,56 @@ public class Hitbox {
   boolean isCollision(Hitbox other){
     
     // If the hitbox is a solid object
-    //if (hitboxType == "solidObject"){
-      //if ()
-    
-    //}
+    if (other.hitboxType == "solidObject"){
+      if (this.topLeft.x <= other.bottomRight.x && this.topLeft.x >= other.topLeft.x){
+          
+          if(this.topLeft.y <=other.bottomRight.y && this.topLeft.y >= other.topLeft.y){
+            return true;
+         }    
+          if(this.bottomRight.y >= other.topLeft.y && this.bottomRight.y <= other.bottomRight.y){
+            return true;
+          }
+          else {
+            return false;
+          }
+            
+      }
+      if(this.bottomRight.x >= other.topLeft.x && this.bottomRight.x <= other.bottomRight.x){
+        
+        if(this.bottomRight.y >= other.topLeft.y && this.bottomRight.y <= other.bottomRight.y){
+          return true;    
+        }
+        if(this.topLeft.y >= other.topLeft.y && this.topLeft.y <= other.bottomRight.y){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
+  
+    }
     
     
     // If the hitbox is an entrance
-    if (hitboxType == "entrance"){
-      if (this.bottomRight.x < other.topLeft.x || this.topLeft.x > other.bottomRight.x) {
+    if (other.hitboxType == "entrance"){
+      if(this.topLeft.x  >=  other.topLeft.x && this.bottomRight.x <= other.bottomRight.x){
+        if(this.topLeft.y >= other.topLeft.y && this.bottomRight.y <= other.bottomRight.y){
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+      else {
         return false;
       }
-      if (this.bottomRight.y < other.topLeft.y || this.topLeft.y > other.bottomRight.y) {
-        return false;
-      }
-      return true;
     }
-    return false;
-    
+    else {
+      return false; 
+    }
   }
   
   public Hitbox(){
