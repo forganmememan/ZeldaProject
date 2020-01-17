@@ -10,7 +10,7 @@ int j;
 void setup(){
   size(1024, 704); // 16 x 11 grid of 16x16 sprites
   frameRate(10);
-  bg = loadImage("/images/overworld/L2.png");
+  bg = loadImage("/images/overworld/H8.png");
   player = new Player();
   rock = new Rock();
   

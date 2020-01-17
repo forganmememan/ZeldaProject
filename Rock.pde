@@ -10,12 +10,16 @@ public class Rock {
     rockHitbox = new Hitbox();
     x = width/2 + 100;
     y = height/2 + 100;
+    rockHitbox.topLeft.x = (int)x;
+    rockHitbox.topLeft.y = (int)y;
+    rockHitbox.bottomRight.x = (int)x + 16;
+    rockHitbox.bottomRight.y = (int)y + 16;
+    rockHitbox.hitboxType = "entrance";
   }
   
   
   void updateRock(){
     image(rock, x, y, 16*4, 16*4);
-    
   }
 
 }

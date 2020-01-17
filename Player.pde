@@ -3,6 +3,7 @@ public class Player {
   float x, y;
   float playerSpeed = 20;
   String playerDirection;
+  String playerLocation;
   boolean isSwinging;
   
   PImage[] playerLeft = new PImage[2];
@@ -31,7 +32,12 @@ public class Player {
     x = width/2;
     y = height/2;
     playerDirection = "down";
+    playerLocation = "H8";
     isSwinging = false;
+    playerHitbox.topLeft.x = (int)x;
+    playerHitbox.topLeft.y = (int)y;
+    playerHitbox.bottomRight.x = (int)x + 15;
+    playerHitbox.bottomRight.y = (int)y + 16;
   }
   
   
@@ -46,21 +52,29 @@ public class Player {
       if (keyCode == LEFT) {
         image(playerLeft[frameCount%2], x, y, 15*4, 16*4);
         x -= playerSpeed;
+        playerHitbox.topLeft.x -= playerSpeed;
+        playerHitbox.bottomRight.x -= playerSpeed;
         playerDirection = "left";
       }
       if (keyCode == RIGHT) {
         image(playerRight[frameCount%2], x, y, 15*4, 16*4);
         x += playerSpeed;
+        playerHitbox.topLeft.x += playerSpeed;
+        playerHitbox.bottomRight.x += playerSpeed;
         playerDirection = "right";
       }
       if (keyCode == DOWN) {
         image(playerDown[frameCount%2], x, y, 15*4, 16*4);
         y += playerSpeed;
+        playerHitbox.topLeft.y += playerSpeed;
+        playerHitbox.bottomRight.y += playerSpeed;
         playerDirection = "down";
       }
       if (keyCode == UP) {
         image(playerUp[frameCount%2], x, y, 15*4, 16*4);
         y -= playerSpeed;
+        playerHitbox.topLeft.y -= playerSpeed;
+        playerHitbox.bottomRight.y -= playerSpeed;
         playerDirection = "up";
       }
       if (key == 'x') {
@@ -92,7 +106,9 @@ public class Player {
   
   void checkHitbox(){
     rect(x, y, 15*4, 16*4);
-    //playerHitbox.isOverlapping();
+    if(playerHitbox.isCollision(rock.rockHitbox)){
+      println("collision");
+    }
   }
   
   void swing(){
