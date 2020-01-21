@@ -6,12 +6,12 @@ Map map;
 
 Animation playerSwingDown, playerSwingUp, playerSwingLeft, playerSwingRight;
 
-Hitbox test1, test2, cave;
+Hitbox test1, test2, cave, screenLeft, screenRight, screenUp, screenDown;
 
 
 void setup(){
   size(1024, 704); // 16 x 11 grid of 16x16 sprites
-  frameRate(10);
+  frameRate(60);
   bg = loadImage("/images/overworld/H8.png");
   player = new Player();
   rock = new Rock();
@@ -19,10 +19,19 @@ void setup(){
   test1 = new Hitbox();
   test2 = new Hitbox();
   cave = new Hitbox();
+  screenLeft = new Hitbox();
+  screenRight = new Hitbox();
+  screenUp = new Hitbox();
+  screenDown = new Hitbox();
   
   test1.createHitbox(192, 128, 16, 16, "solidObject");
   test2.createHitbox(256, 0, 16, 16, "solidObject");
   cave.createHitbox(256, 64, 16, 16, "entrance");
+  
+  screenUp.createHitbox(0, -16, 256, 16, "solidObject");
+  screenDown.createHitbox(0, height, 256, 16, "solidObject");
+  screenLeft.createHitbox(-16, 0, 16, 176, "solidObject");
+  screenRight.createHitbox(width, 0, 16, 176, "solidObject");
   
   
   playerSwingDown = new Animation("/images/animations/playerSwingDown/playerSwingDown", 4);
@@ -37,7 +46,7 @@ void setup(){
 void draw(){
   map.updateMap();
   player.updatePlayer();
-  //rock.updateRock();
+  rock.updateRock();
   
 }
 

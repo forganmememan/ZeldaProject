@@ -2,7 +2,7 @@ public class Player {
   
   // Defining attributes of the player
   float x, y, Width, Height;
-  float playerSpeed = 20;
+  float playerSpeed = 15;
   String playerDirection;
   String playerLocation;
   
@@ -54,7 +54,7 @@ public class Player {
   
   void movePlayer(){ // Updating the player's position and playing the player animations
   
-    if (keyPressed) {
+    if (keyPressed && map.isTransitioning == false) {
       
       // When you press left //
       if (keyCode == LEFT) {
@@ -257,6 +257,9 @@ public class Player {
     }
     if (playerHitbox.isCollision(cave)){
       playerLocation = "cave";
+    }
+    if (playerHitbox.isCollision(screenUp) && map.isTransitioning == false){
+      map.transitionUp();
     }
   }
 
