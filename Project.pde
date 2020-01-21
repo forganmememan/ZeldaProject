@@ -1,10 +1,12 @@
 PImage bg;
-String[][] map = new String[16][8];
-String[] unicode = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"};
+
 Player player;
 Rock rock;
+Map map;
 
-int j;
+Animation playerSwingDown, playerSwingUp, playerSwingLeft, playerSwingRight;
+
+Hitbox test1, test2, cave;
 
 
 void setup(){
@@ -13,22 +15,77 @@ void setup(){
   bg = loadImage("/images/overworld/H8.png");
   player = new Player();
   rock = new Rock();
+  map = new Map();
+  test1 = new Hitbox();
+  test2 = new Hitbox();
+  cave = new Hitbox();
   
-   // Create and fill map array
-  for (int i = 0; i < 16; i++){
-    for (j = 0; j < 8; j++){
-      map[i][j] = unicode[i] + ((int)j + 1);
-    }
-    j = 0;
-  }
+  test1.createHitbox(192, 128, 16, 16, "solidObject");
+  test2.createHitbox(256, 0, 16, 16, "solidObject");
+  cave.createHitbox(256, 64, 16, 16, "entrance");
+  
+  
+  playerSwingDown = new Animation("/images/animations/playerSwingDown/playerSwingDown", 4);
+  playerSwingUp = new Animation("/images/animations/playerSwingUp/playerSwingUp", 4);
+  playerSwingLeft = new Animation("/images/animations/playerSwingLeft/playerSwingLeft", 4);
+  playerSwingRight = new Animation("/images/animations/playerSwingRight/playerSwingRight", 4);
+   
   
 }
 
 
 void draw(){
-  bg();
+  map.updateMap();
   player.updatePlayer();
-  rock.updateRock();
+  //rock.updateRock();
+  
+}
+
+void keyReleased(){
+  if (key == 'x'){
+    if (player.playerDirection == "down"){
+      if (playerSwingDown.frame == 3){
+        player.finishedSwinging = false;
+        playerSwingDown.end = false;
+        player.isSwinging = false;
+      }
+      if (playerSwingDown.frame != 3){
+        player.earlySwing = true;
+      }
+    }
+    if (player.playerDirection == "up"){
+      if (playerSwingUp.frame == 3){
+        player.finishedSwinging = false;
+        playerSwingUp.end = false;
+        player.isSwinging = false;
+      }
+      if (playerSwingUp.frame != 3){
+        player.earlySwing = true;
+      }
+    }
+    if (player.playerDirection == "left"){
+      if (playerSwingLeft.frame == 3){
+        player.finishedSwinging = false;
+        playerSwingLeft.end = false;
+        player.isSwinging = false;
+      }
+      if (playerSwingLeft.frame != 3){
+        player.earlySwing = true;
+      }
+    }
+    if (player.playerDirection == "right"){
+      if (playerSwingRight.frame == 3){
+        player.finishedSwinging = false;
+        playerSwingRight.end = false;
+        player.isSwinging = false;
+      }
+      if (playerSwingRight.frame != 3){
+        player.earlySwing = true;
+      }
+    }
+    
+    
+  }
 }
 
 
@@ -39,16 +96,3 @@ void draw(){
         //player.isSwinging = false;
     //}
   //}
-
-void bg(){
-  image(bg, 0, 0, width, height);
-  checkTransition();
-}
-
-
-boolean checkTransition(){
-  if (player.x < 10){
-    return true;
-  }
-  return false;
-}

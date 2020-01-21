@@ -1,5 +1,5 @@
 public class Rock {
-  float x, y;
+  float x, y, Width, Height;
   PImage rock;
   
   Hitbox rockHitbox;
@@ -10,16 +10,15 @@ public class Rock {
     rockHitbox = new Hitbox();
     x = width/2 + 100;
     y = height/2 + 100;
-    rockHitbox.topLeft.x = (int)x;
-    rockHitbox.topLeft.y = (int)y;
-    rockHitbox.bottomRight.x = (int)x + 16*4;
-    rockHitbox.bottomRight.y = (int)y + 16*4;
-    rockHitbox.hitboxType = "solidObject";
+    Width = 16;
+    Height = 16;
+    rockHitbox.createHitbox(x, y, Width, Height, "solidObject");
   }
   
   
   void updateRock(){
     image(rock, x, y, 16*4, 16*4);
+    
   }
 
 }
