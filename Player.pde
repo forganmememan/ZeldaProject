@@ -2,7 +2,7 @@ public class Player {
   
   // Defining attributes of the player
   float x, y, Width, Height;
-  float playerSpeed = 20; // 15 on school pc, 20 on home pc
+  float playerSpeed = 15; // 15 on school pc, 20 on home pc
   String playerDirection;
   String playerLocation;
   
@@ -425,7 +425,7 @@ public class Player {
             }
           case 7: // Starting zone
             if (map.j == 7){
-              playerHitbox.isCollision(rock.rockHitbox); 
+              //playerHitbox.isCollision(rock.rockHitbox); 
               playerHitbox.isCollision(wall1);
               wall1.createHitbox(0, 0, 32, 80, "solidObject");
               playerHitbox.isCollision(wall2);
@@ -444,6 +444,10 @@ public class Player {
               wall8.createHitbox(2*64, 9*64, 12*16, 32, "solidObject");
               playerHitbox.isCollision(wall9);
               wall9.createHitbox(14*64, 6*64, 32, 5*16, "solidObject");
+              if(playerHitbox.isCollision(cave)){
+                println("working");
+                playerLocation="cave"; 
+              }
             }
             
           }

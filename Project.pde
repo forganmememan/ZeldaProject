@@ -64,7 +64,7 @@ void setup(){
 void draw(){
   map.updateMap();
   player.updatePlayer();
-  rock.updateRock();
+  //rock.updateRock();
 }
 
 void keyReleased(){
