@@ -8,10 +8,12 @@ Animation playerSwingDown, playerSwingUp, playerSwingLeft, playerSwingRight;
 
 Hitbox test1, test2, cave, screenLeft, screenRight, screenUp, screenDown;
 
+Hitbox wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9;
+
 
 void setup(){
   size(1024, 704); // 16 x 11 grid of 16x16 sprites
-  frameRate(60);
+  frameRate(10); // 60 on school pc, 10 on home pc
   bg = loadImage("/images/overworld/H8.png");
   player = new Player();
   rock = new Rock();
@@ -23,14 +25,30 @@ void setup(){
   screenRight = new Hitbox();
   screenUp = new Hitbox();
   screenDown = new Hitbox();
+  wall1 = new Hitbox();
+  wall2 = new Hitbox();
+  wall3 = new Hitbox();
+  wall4 = new Hitbox();
+  wall5 = new Hitbox();
+  wall6 = new Hitbox();
+  wall7 = new Hitbox();
+  wall8 = new Hitbox();
+  wall9 = new Hitbox();
   
-  test1.createHitbox(192, 128, 16, 16, "solidObject");
-  test2.createHitbox(256, 0, 16, 16, "solidObject");
+  //test1.createHitbox(192, 128, 16, 16, "solidObject");
+  //test2.createHitbox(256, 0, 16, 16, "solidObject");
   cave.createHitbox(256, 64, 16, 16, "entrance");
   
-  screenUp.createHitbox(0, -16, 256, 16, "solidObject");
-  screenDown.createHitbox(0, height, 256, 16, "solidObject");
-  screenLeft.createHitbox(-16, 0, 16, 176, "solidObject");
+  
+  // creating wall hitboxes for H8
+  //wall1.createHitbox(0, 0, 32, 80, "solidObject");
+  
+  
+  
+  
+  screenUp.createHitbox(0, -64 - 16, 256, 16, "solidObject");
+  screenDown.createHitbox(0, height + 16, 256, 16, "solidObject");
+  screenLeft.createHitbox(-64 - 16, 0, 16, 176, "solidObject");
   screenRight.createHitbox(width, 0, 16, 176, "solidObject");
   
   
@@ -47,7 +65,6 @@ void draw(){
   map.updateMap();
   player.updatePlayer();
   rock.updateRock();
-  
 }
 
 void keyReleased(){
@@ -96,12 +113,3 @@ void keyReleased(){
     
   }
 }
-
-
-  //void keyReleased() {
-    
-    //if (key == 'x') {
-      //println("key released");
-        //player.isSwinging = false;
-    //}
-  //}

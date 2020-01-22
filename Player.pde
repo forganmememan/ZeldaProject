@@ -2,7 +2,7 @@ public class Player {
   
   // Defining attributes of the player
   float x, y, Width, Height;
-  float playerSpeed = 15;
+  float playerSpeed = 20; // 15 on school pc, 20 on home pc
   String playerDirection;
   String playerLocation;
   
@@ -238,29 +238,374 @@ public class Player {
   // Checking if the player collides with anything
   void checkHitbox(){
     //rect(x, y, 15*4, 16*4);
-    if(playerHitbox.isCollision(rock.rockHitbox)){
-      
-      if (playerDirection == "up"){
-        //yes
-        map.transitionUp();
-      }
-    }
-    else {
+    //if(playerHitbox.isCollision(rock.rockHitbox)){
+      //oh
+    //}
+    //else {
       //println("no collision");
-    }
+    //}
     
-    if (playerHitbox.isCollision(test1)){
+    //if (playerHitbox.isCollision(test1)){
       //yes
-    }
-    if (playerHitbox.isCollision(test2)){
+    //}
+    //if (playerHitbox.isCollision(test2)){
       //yes
-    }
-    if (playerHitbox.isCollision(cave)){
-      playerLocation = "cave";
-    }
+    //}
+    //if (playerHitbox.isCollision(cave)){
+      //playerLocation = "cave";
+    //}
     if (playerHitbox.isCollision(screenUp) && map.isTransitioning == false){
       map.transitionUp();
     }
+    if (playerHitbox.isCollision(screenDown) && map.isTransitioning == false){
+      map.transitionDown();
+    }
+    if (playerHitbox.isCollision(screenLeft) && map.isTransitioning == false){
+      map.transitionLeft();
+    }
+    if (playerHitbox.isCollision(screenRight) && map.isTransitioning == false){
+      map.transitionRight();
+    }
+    
+    
+    // Check hitboxes for every region
+    
+    switch(map.i) {
+      case 0: // A column 
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 1: // B column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 2: // C column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 3: // D column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 4: // E column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 5: // F column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 6: // G column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            // oh
+          case 7:
+            // last one
+        }
+      case 7: // H column
+        switch(map.j) {
+          case 0:
+            // first room
+          case 1:
+            // next one
+          case 2:
+            // yeah
+          case 3:
+            // nice
+          case 4:
+            // even nicer
+          case 5:
+            // cool
+          case 6:
+            if (map.j == 6){
+              playerHitbox.isCollision(wall1);
+              wall1.createHitbox(0, 576, 112, 32, "solidObject");
+            }
+          case 7: // Starting zone
+            if (map.j == 7){
+              playerHitbox.isCollision(rock.rockHitbox); 
+              playerHitbox.isCollision(wall1);
+              wall1.createHitbox(0, 0, 32, 80, "solidObject");
+              playerHitbox.isCollision(wall2);
+              wall2.createHitbox(128, 0, 16, 64, "solidObject");
+              playerHitbox.isCollision(wall3);
+              wall3.createHitbox(192, 0, 16, 48, "solidObject");
+              playerHitbox.isCollision(wall4);
+              wall4.createHitbox(256, 0, 16, 16, "solidObject");
+              playerHitbox.isCollision(wall5);
+              wall5.createHitbox(320, 0, 32, 32, "solidObject");
+              playerHitbox.isCollision(wall6);
+              wall6.createHitbox(9*64, 0, 112, 80, "solidObject");
+              playerHitbox.isCollision(wall7);
+              wall7.createHitbox(0, 6*64, 32, 5*16, "solidObject");
+              playerHitbox.isCollision(wall8);
+              wall8.createHitbox(2*64, 9*64, 12*16, 32, "solidObject");
+              playerHitbox.isCollision(wall9);
+              wall9.createHitbox(14*64, 6*64, 32, 5*16, "solidObject");
+            }
+            
+          }
+        case 8:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 9:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 10:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 11:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 12:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 13:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 14:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+        case 15:
+          switch(map.j) {
+            case 0:
+              // first room
+            case 1:
+              // next one
+            case 2:
+              // yeah
+            case 3:
+              // nice
+            case 4:
+              // even nicer
+            case 5:
+              // cool
+            case 6:
+              // oh
+            case 7:
+              // last one
+          }
+       
+    }
+    
+    
+    
+    
+    
   }
 
 }

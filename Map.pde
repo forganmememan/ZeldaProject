@@ -10,12 +10,14 @@ public class Map {
   int i, j;
   float mapX, mapY;
   float previousX, previousY;
+  float mapSpeed;
   boolean isTransitioning;
   
   public Map(){
     
     mapX = 0;
     mapY = 0;
+    mapSpeed = 25; // 15 on school pc, 25 on home pc
     
     // Create and fill map array
     for (int i = 0; i < 16; i++){
@@ -33,38 +35,14 @@ public class Map {
   }
   
   void updateMap(){
-    //println(overworld[i][j]);
     
     if (isTransitioning){
       transition();
     }
     else {
-      if (player.playerLocation == "H8"){
-        image(bg, 0, 0, width, height);
-
-      }
-      if (player.playerLocation == "H7"){
-        image(bg, 0, 0, width, height);
-
-      }
-
+      image(bg, 0, 0, width, height);
     }
-    
-    //if (player.playerLocation != "cave"){
-      //image(backgroundOverworld[i][j], 0, 0, width, height);
-    //}
-    //else {
-      //image(cave, 0, 0, width, height);
-    //}
-    
-    //mapHitboxes();
-  }
-  
-  void mapHitboxes(){
-    if (player.playerLocation == "H8"){
-      
-      
-    }
+ 
   }
   
   void transitionUp(){
@@ -74,29 +52,147 @@ public class Map {
     previousY = player.y;
   }
   
+  void transitionDown(){
+    isTransitioning = true;
+    bg2 = loadImage("/images/overworld/" + overworld[i][j+1] + ".png");
+    previousX = player.x;
+    previousY = player.y;
+  }
+  
+  void transitionLeft(){
+    isTransitioning = true;
+    bg2 = loadImage("/images/overworld/" + overworld[i-1][j] + ".png");
+    previousX = player.x;
+    previousY = player.y;
+  }
+  
+  void transitionRight(){
+    isTransitioning = true;
+    bg2 = loadImage("/images/overworld/" + overworld[i+1][j] + ".png");
+    previousX = player.x;
+    previousY = player.y;
+  }
+  
   void transition(){
+    
+    
+    // Screen transition from the top //
     if (player.playerDirection == "up"){
       image(bg, mapX, mapY, width, height);
       image(bg2, mapX, mapY - height, width, height);
       
       if (player.y < height-player.Height*4){
-        player.y += 15;
-        player.playerHitbox.topLeft.y += 15;
-        player.playerHitbox.bottomRight.y += 15;
+        player.y += mapSpeed;
+        player.playerHitbox.topLeft.y += mapSpeed;
+        player.playerHitbox.bottomRight.y += mapSpeed;
       }
       if (mapY < height){
-        mapY += 15;
+        mapY += mapSpeed;
       }
       else {
         isTransitioning = false;
         j -= 1;
-        player.playerLocation = overworld[i][j];
+        player.playerLocation = (String)overworld[i][j];
         player.x = previousX;
         player.y = height - 64;
         player.playerHitbox.topLeft.y = player.y;
         player.playerHitbox.bottomRight.y = player.y + 64;
+        bg = bg2;
+        mapX = 0;
+        mapY = 0;
       }
     }
+    ////////////////////////////////////////
+    
+    
+    
+    // Screen transition from the bottom //
+    if (player.playerDirection == "down"){
+      image(bg, mapX, mapY, width, height);
+      image(bg2, mapX, mapY + height, width, height);
+      
+      if (player.y > 0){
+        player.y -= mapSpeed;
+        player.playerHitbox.topLeft.y -= mapSpeed;
+        player.playerHitbox.bottomRight.y -= mapSpeed;
+      }
+      if (mapY > -height){
+        mapY -= mapSpeed;
+      }
+      else {
+        isTransitioning = false;
+        j += 1;
+        player.playerLocation = (String)overworld[i][j];
+        player.x = previousX;
+        player.y = 0;
+        player.playerHitbox.topLeft.y = player.y;
+        player.playerHitbox.bottomRight.y = player.y + 64;
+        bg = bg2;
+        mapX = 0;
+        mapY = 0;
+      }
+    }
+    //////////////////////////////////////////
+    
+    
+    
+    // Screen transition from the left //
+    if (player.playerDirection == "left"){
+      image(bg, mapX, mapY, width, height);
+      image(bg2, mapX - width, mapY, width, height);
+      
+      if (player.x < width - 64){
+        player.x += mapSpeed;
+        player.playerHitbox.topLeft.x += mapSpeed;
+        player.playerHitbox.bottomRight.x += mapSpeed;
+      }
+      if (mapX < width){
+        mapX += mapSpeed;
+      }
+      else {
+        isTransitioning = false;
+        i -= 1;
+        player.playerLocation = (String)overworld[i][j];
+        player.x = width - 64;
+        player.y = previousY;
+        player.playerHitbox.topLeft.x = player.x;
+        player.playerHitbox.bottomRight.x = player.x + 64;
+        bg = bg2;
+        mapX = 0;
+        mapY = 0;
+      }
+    }
+    //////////////////////////////////////
+    
+    
+    
+    // Screen transition from the right //
+    if (player.playerDirection == "right"){
+      image(bg, mapX, mapY, width, height);
+      image(bg2, mapX + width, mapY, width, height);
+      
+      if (player.x > 0){
+        player.x -= mapSpeed;
+        player.playerHitbox.topLeft.x -= mapSpeed;
+        player.playerHitbox.bottomRight.x -= mapSpeed;
+      }
+      if (mapX > -width){
+        mapX -= mapSpeed;
+      }
+      else {
+        isTransitioning = false;
+        i += 1;
+        player.playerLocation = (String)overworld[i][j];
+        player.x = 0;
+        player.y = previousY;
+        player.playerHitbox.topLeft.x = player.x;
+        player.playerHitbox.bottomRight.x = player.x + 64;
+        bg = bg2;
+        mapX = 0;
+        mapY = 0;
+      }
+    }
+    ////////////////////////////////////////
   }
 
 }
