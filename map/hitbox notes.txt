@@ -2,5 +2,5 @@ F7 - Make rock on bridge
 I4 - Make rock barricade above
 K5 - Block off desert with rocks
 L5 - Block off desert wiht rocks
-M6 - Block off right side with rocks
+M6 Not done - Block off right side with rocks
 M8 - Block off shore with rocks on the right

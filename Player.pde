@@ -484,9 +484,67 @@ public class Player {
             case 5:
               // cool
             case 6:
-              // oh
+              if (map.j == 6){
+                playerHitbox.isCollision(wall1);
+                wall1.createHitbox(0, 0, 7*16, 32, "solidObject");
+                playerHitbox.isCollision(wall2);
+                wall2.createHitbox(7*64, 0, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall3);
+                wall3.createHitbox(8*64, 0, 8*16, 32, "solidObject");
+                playerHitbox.isCollision(wall4);
+                wall4.createHitbox(14*64, 128, 32, 16, "solidObject");
+                playerHitbox.isCollision(wall5);
+                wall5.createHitbox(15*64, 3*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall6);
+                wall6.createHitbox(3*64, 3*64, 7*16, 16, "solidObject");
+                playerHitbox.isCollision(wall7);
+                wall7.createHitbox(3*64, 3*64, 4*16, 16, "solidObject");
+                playerHitbox.isCollision(wall8);
+                wall8.createHitbox(3*64, 5*64, 4*16, 16, "solidObject");
+                playerHitbox.isCollision(wall9);
+                wall9.createHitbox(3*64, 7*64, 4*16, 16, "solidObject");
+                playerHitbox.isCollision(wall10);
+                wall10.createHitbox(8*64, 4*64, 3*16, 16, "solidObject");
+                playerHitbox.isCollision(wall11);
+                wall11.createHitbox(8*64, 6*64, 3*16, 16, "solidObject");
+                playerHitbox.isCollision(wall12);
+                wall12.createHitbox(0, 9*64, 12*16, 32, "solidObject");
+                playerHitbox.isCollision(wall13);
+                wall13.createHitbox(14*64, 8*64, 2*16, 3*16, "solidObject");
+                playerHitbox.isCollision(wall14);
+                wall14.createHitbox(15*64, 7*64, 16, 16, "solidObject");
+              }
+              
+              
             case 7:
-              // last one
+              if (map.j == 7){
+                playerHitbox.isCollision(wall1);
+                wall1.createHitbox(0, 0, 12*16, 32, "solidObject");
+                playerHitbox.isCollision(wall2);
+                wall2.createHitbox(14*64, 0, 32, 4*16, "solidObject");
+                playerHitbox.isCollision(wall3);
+                wall3.createHitbox(15*64, 4*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall4);
+                wall4.createHitbox(0, 9*64, 16*16, 32, "solidObject");
+                playerHitbox.isCollision(wall5);
+                wall5.createHitbox(14*64, 7*64, 2*16, 4*16, "solidObject");
+                playerHitbox.isCollision(wall6);
+                wall6.createHitbox(15*64, 6*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall7);
+                wall7.createHitbox(2*64, 5*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall8);
+                wall8.createHitbox(5*64, 5*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall9);
+                wall9.createHitbox(8*64, 5*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall10);
+                wall10.createHitbox(8*64, 3*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall11);
+                wall11.createHitbox(8*64, 7*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall12);
+                wall12.createHitbox(10*64, 4*64, 16, 16, "solidObject");
+                playerHitbox.isCollision(wall13);
+                wall13.createHitbox(10*64, 6*64, 16, 16, "solidObject");
+              }
           }
         case 7: // H column
           switch(map.j) {

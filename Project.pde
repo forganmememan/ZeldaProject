@@ -13,7 +13,7 @@ Animation playerSword;
 
 Hitbox test1, test2, cave, screenLeft, screenRight, screenUp, screenDown, caveLeave;
 
-Hitbox wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9;
+Hitbox wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10, wall11, wall12, wall13, wall14, wall15, wall16, wall17, wall18, wall19, wall20;
 
 Item sword = new Item();
 
@@ -46,7 +46,17 @@ void setup(){
   wall7 = new Hitbox();
   wall8 = new Hitbox();
   wall9 = new Hitbox();
-  
+  wall10 = new Hitbox();
+  wall11 = new Hitbox();
+  wall12 = new Hitbox();
+  wall13 = new Hitbox();
+  wall14 = new Hitbox();
+  wall15 = new Hitbox();
+  wall16 = new Hitbox();
+  wall17 = new Hitbox();
+  wall18 = new Hitbox();
+  wall19 = new Hitbox();
+  wall20 = new Hitbox();
   //test1.createHitbox(192, 128, 16, 16, "solidObject");
   //test2.createHitbox(256, 0, 16, 16, "solidObject");
   cave.createHitbox(256, 64, 16, 16, "entrance");
