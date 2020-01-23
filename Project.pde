@@ -1,22 +1,33 @@
 PImage bg;
+PImage black = new PImage();
+
+boolean isCovering;
 
 Player player;
 Rock rock;
+Rock boundary1, boundary2, boundary3, boundary4, boundary5, boundary6;
 Map map;
 
-Animation playerSwingDown, playerSwingUp, playerSwingLeft, playerSwingRight;
+Animation playerSwingDown, playerSwingUp, playerSwingLeft, playerSwingRight, playerEnter, playerLeave;
+Animation playerSword;
 
-Hitbox test1, test2, cave, screenLeft, screenRight, screenUp, screenDown;
+Hitbox test1, test2, cave, screenLeft, screenRight, screenUp, screenDown, caveLeave;
 
 Hitbox wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9;
+
+Item sword = new Item();
 
 
 void setup(){
   size(1024, 704); // 16 x 11 grid of 16x16 sprites
   frameRate(10); // 60 on school pc, 10 on home pc
   bg = loadImage("/images/overworld/H8.png");
+  black = loadImage("/images/black.png");
   player = new Player();
-  rock = new Rock();
+  //rock = new Rock();
+  
+  boundary1 = new Rock(4*64, 5*64, 16, 17);
+  
   map = new Map();
   test1 = new Hitbox();
   test2 = new Hitbox();
@@ -25,6 +36,7 @@ void setup(){
   screenRight = new Hitbox();
   screenUp = new Hitbox();
   screenDown = new Hitbox();
+  caveLeave = new Hitbox();
   wall1 = new Hitbox();
   wall2 = new Hitbox();
   wall3 = new Hitbox();
@@ -51,11 +63,16 @@ void setup(){
   screenLeft.createHitbox(-64 - 16, 0, 16, 176, "solidObject");
   screenRight.createHitbox(width, 0, 16, 176, "solidObject");
   
+  caveLeave.createHitbox(0, height + 16, 256, 16, "solidObject");
   
-  playerSwingDown = new Animation("/images/animations/playerSwingDown/playerSwingDown", 4);
-  playerSwingUp = new Animation("/images/animations/playerSwingUp/playerSwingUp", 4);
-  playerSwingLeft = new Animation("/images/animations/playerSwingLeft/playerSwingLeft", 4);
-  playerSwingRight = new Animation("/images/animations/playerSwingRight/playerSwingRight", 4);
+  
+  playerSwingDown = new Animation("/images/animations/playerSwingDown/playerSwingDown", 4, 0);
+  playerSwingUp = new Animation("/images/animations/playerSwingUp/playerSwingUp", 4, 0);
+  playerSwingLeft = new Animation("/images/animations/playerSwingLeft/playerSwingLeft", 4, 0);
+  playerSwingRight = new Animation("/images/animations/playerSwingRight/playerSwingRight", 4, 0);
+  playerEnter = new Animation("/images/animations/playerEnter/playerEnter", 15, 0);
+  playerLeave = new Animation("/images/animations/playerLeave/playerLeave", 15, 0);
+  playerSword = new Animation("/images/playerSword", 1, 30);
    
   
 }
@@ -63,8 +80,10 @@ void setup(){
 
 void draw(){
   map.updateMap();
+  map.coverItem();
   player.updatePlayer();
   //rock.updateRock();
+  
 }
 
 void keyReleased(){

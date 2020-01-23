@@ -1,23 +1,23 @@
 public class Rock {
-  float x, y, Width, Height;
+  float xRock, yRock, rockWidth, rockHeight;
   PImage rock;
   
   Hitbox rockHitbox;
   
   
-  public Rock(){
+  public Rock(float x, float y, float Width, float Height){
     rock = loadImage("/images/rock.png");
     rockHitbox = new Hitbox();
-    x = width/2 + 100;
-    y = height/2 + 100;
-    Width = 16;
-    Height = 16;
-    rockHitbox.createHitbox(x, y, Width, Height, "solidObject");
+    xRock = x;
+    yRock = y;
+    rockWidth = Width;
+    rockHeight = Height;
+    rockHitbox.createHitbox(x, y, rockWidth, rockHeight, "solidObject");
   }
   
   
   void updateRock(){
-    image(rock, x, y, 16*4, 16*4);
+    image(rock, xRock, yRock, 16*4, 16*4);
     
   }
 

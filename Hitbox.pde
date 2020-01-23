@@ -107,6 +107,37 @@ public class Hitbox {
         return false;
       }
     }
+    
+    if (other.hitboxType == "item"){
+      if (this.topLeft.x < other.bottomRight.x && this.topLeft.x > other.topLeft.x){ // When approaching from the right side
+          
+          if(this.topLeft.y < other.bottomRight.y && this.topLeft.y > other.topLeft.y){ // Approaching from the bottom right corner   
+            return true;
+         }    
+          if(this.bottomRight.y > other.topLeft.y && this.bottomRight.y < other.bottomRight.y){ // Approaching from the top right corner
+            return true;
+          }
+          else {
+            return false;
+          }
+            
+      }
+      if(this.bottomRight.x > other.topLeft.x && this.bottomRight.x < other.bottomRight.x){ // When approaching from the left side
+        
+        if(this.bottomRight.y > other.topLeft.y && this.bottomRight.y < other.bottomRight.y){ // Approaching from the top left corner
+          return true;    
+        }
+        if(this.topLeft.y > other.topLeft.y && this.topLeft.y < other.bottomRight.y){ // Approaching from the bottom left corner
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
+    }
     else {
       return false; 
     }

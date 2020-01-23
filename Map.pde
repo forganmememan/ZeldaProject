@@ -3,14 +3,15 @@ public class Map {
   String[][] overworld = new String[16][8];
   String[] unicode = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"};
   
-  String[] secretRooms = new String[1];
+  int secretRoomNum = 10;
+  String[] secretRooms = new String[secretRoomNum];
   String[][] dungeon1 = new String[6][6];
   
   PImage[][] backgroundOverworld = new PImage[16][8];
   PImage cave = new PImage();
   PImage bg2 = new PImage();
   
-  int i, j, iDungeon1, jDungeon1;
+  int i, j, iSecretRoom, iDungeon1, jDungeon1;
   float mapX, mapY;
   float previousX, previousY;
   float mapSpeed;
@@ -20,7 +21,7 @@ public class Map {
     
     mapX = 0;
     mapY = 0;
-    mapSpeed = 15; // 15 on school pc, 25 on home pc
+    mapSpeed = 25; // 15 on school pc, 25 on home pc
     
     // Create and fill map array
     for (int i = 0; i < 16; i++){
@@ -31,8 +32,12 @@ public class Map {
       j = 0;
     }
     
-    for (int iDungeon1 = 0; i < 6; iDungeon1++){
-      for(int jDungeon1 = 0; i<6; jDungeon1++){
+    for (int iSecretRoom = 0; iSecretRoom < secretRoomNum; iSecretRoom++){
+      secretRooms[iSecretRoom] = "" + (iSecretRoom + 1);
+    }
+    
+    for (int iDungeon1 = 0; iDungeon1 < 6; iDungeon1++){
+      for(int jDungeon1 = 0; jDungeon1 < 6; jDungeon1++){
         dungeon1[iDungeon1][jDungeon1]=unicode[iDungeon1]+(jDungeon1+1);
       }
       jDungeon1 = 0;
@@ -96,7 +101,7 @@ public class Map {
     // Screen transition from the top //
     if (player.playerDirection == "up"){
       image(bg, mapX, mapY, width, height);
-
+      image(bg2, mapX, mapY - height, width, height);
       
       if (player.y < height-player.Height*4){
         player.y += mapSpeed;
@@ -210,6 +215,12 @@ public class Map {
       }
     }
     ////////////////////////////////////////
+  }
+  
+  void coverItem(){
+    if (player.isReceivingItem == true || player.hasSword && player.playerLocation == "cave" && player.isLeaving == false){
+      image(black, 480, 370, 64, 70);
+    }
   }
 
 }
